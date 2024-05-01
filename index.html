@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS3 - 4758</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<!-- Modal Login-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Login Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="return validarForm(this)" name="loginForm">
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email address</label>
+                      <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password">
+                      </div>
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal register-->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Register Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="get" name="registerForm">
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="emailReg" aria-describedby="emailHelp" name="name">
+                      <div id="emailHelp" class="form-text">El nombre con 20 caracteres máximo</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="passwordReg" name="passwordRegister">
+                    </div>
+                    <select class="form-select form-select-lg mb-3" aria-label="Large select example">
+                        <option selected>Ciudad</option>
+                        <option value="1">Barquisimeto</option>
+                        <option value="2">Cabudare</option>
+                        <option value="3">Quibor</option>
+                    </select>
+                    <div class="mb-3">
+                        <input class="form-check-input mt-0" id="politicas" type="checkbox" value="politicas" aria-label="Checkbox for following text input" required>
+                        <label for="politicas">Acepto los términos y condiciones</label>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-check-input mt-0" id="politicas2" type="checkbox" value="politicas2" aria-label="Checkbox for following text input">
+                        <label for="politicas2">Acepto los términos y condiciones</label>
+                    </div>
+                    <button type="button" onclick="validarForm(this)" class="btn btn-primary">Registrar</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Javascript 3</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Login
+                </button>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal">
+                    Register
+                </button>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <div id="container"></div>
+    <hr>
+    <h1>Lista de compras</h1>
+    <form>
+        <div class="mb-3">
+            <label for="dato" class="form-label">Email address</label>
+            <input type="text" class="form-control" id="dato" placeholder="Nuevo elemento de la lista">
+        </div>
+        <button type="button" class="btn btn-success" id="agregar">Guardar</button>
+    </form>
+    <ul id="lista"></ul>
+    <button class="btn btn-danger" id="limpiar">Limpiar Lista</button>
+    <hr>
+    <h1>Tabla de usuarios</h1>
+    <form id="formUser">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+            <label for="telefono" class="form-label">telefono</label>
+            <input type="text" class="form-control" id="telefono" placeholder="telefono">
+        </div>
+        <div class="mb-3">
+            <label for="correo" class="form-label">correo</label>
+            <input type="text" class="form-control" id="correo" placeholder="correo">
+        </div>
+        <button type="button" class="btn btn-success" id="addUser">Guardar</button>
+    </form>
+    <table id="tabla" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script src="./js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
